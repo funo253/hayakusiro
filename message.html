@@ -25,14 +25,32 @@
     <p>送られたメッセージは、以下の通りです:</p>
     <div id="selected-message" class="message"></div>
 
+    <p>送信者の名前:</p>
+    <div id="sender-name" class="message"></div>
+
+    <p>その他メッセージ:</p>
+    <div id="other-message" class="message"></div>
+
     <script>
-        // URLのクエリパラメータからメッセージを取得
+        // URLのクエリパラメータから情報を取得
         const urlParams = new URLSearchParams(window.location.search);
         const message = urlParams.get('message');
+        const name = urlParams.get('name');
+        const otherMessage = urlParams.get('otherMessage');
 
+        // メッセージがあれば表示
         if (message) {
-            // メッセージを表示
             document.getElementById('selected-message').textContent = message;
+        }
+
+        // 名前があれば表示
+        if (name) {
+            document.getElementById('sender-name').textContent = name;
+        }
+
+        // その他のメッセージがあれば表示
+        if (otherMessage) {
+            document.getElementById('other-message').textContent = otherMessage;
         }
     </script>
 
