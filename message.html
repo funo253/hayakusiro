@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>早く○○メッセージ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .message {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>送る・送られたメッセージ</h1>
+
+    <div class="message" id="message"></div>
+
+    <p>送られたメッセージは、以下の通りです:</p>
+    <div id="selected-message" class="message"></div>
+
+    <script>
+        // URLのクエリパラメータからメッセージを取得
+        const urlParams = new URLSearchParams(window.location.search);
+        const message = urlParams.get('message');
+
+        if (message) {
+            // メッセージを表示
+            document.getElementById('selected-message').textContent = message;
+        }
+    </script>
+
+</body>
+</html>
