@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>早く○○メッセージ選択</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .button-container {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>メッセージを選んで共有して早くその人に知らせよう！</h1>
+
+    <div class="button-container">
+        <button onclick="goToMessagePage('早く病院いけ')">早く病院いけ</button>
+        <button onclick="goToMessagePage('早くねろ')">早くねろ</button>
+        <button onclick="goToMessagePage('早く寝ろ')">早く寝ろ</button>
+        <button onclick="goToMessagePage('早くやれ')">早くやれ</button>
+    </div>
+
+    <script>
+        function goToMessagePage(message) {
+            const url = 'message.html?message=' + encodeURIComponent(message);
+            window.location.href = url;
+        }
+    </script>
+
+</body>
+</html>
