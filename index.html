@@ -13,6 +13,9 @@
         .button-container {
             margin: 20px 0;
         }
+        .input-container {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -25,12 +28,29 @@
         <button onclick="goToMessagePage('早くやれ')">早くやれ</button>
     </div>
 
+    <div class="input-container">
+        <label for="customMessage">カスタムメッセージ:</label><br>
+        <input type="text" id="customMessage" placeholder="ここにメッセージを入力">
+        <button onclick="goToCustomMessagePage()">送信</button>
+    </div>
+
     <script>
         function goToMessagePage(message) {
             const url = 'message.html?message=' + encodeURIComponent(message);
             window.location.href = url;
         }
+
+        function goToCustomMessagePage() {
+            const customMessage = document.getElementById('customMessage').value;
+            if (customMessage.trim() !== "") {
+                const url = 'message.html?message=' + encodeURIComponent(customMessage);
+                window.location.href = url;
+            } else {
+                alert('メッセージを入力してください');
+            }
+        }
     </script>
 
 </body>
 </html>
+
