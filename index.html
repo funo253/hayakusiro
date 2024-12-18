@@ -16,6 +16,15 @@
         .input-container {
             margin-top: 20px;
         }
+        .input-container input, .input-container textarea {
+            width: 80%;
+            margin-bottom: 10px;
+            padding: 8px;
+        }
+        .input-container label {
+            display: block;
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
@@ -29,8 +38,15 @@
     </div>
 
     <div class="input-container">
-        <label for="customMessage">カスタムメッセージ:</label><br>
+        <label for="name">名前:</label>
+        <input type="text" id="name" placeholder="あなたの名前">
+        
+        <label for="customMessage">カスタムメッセージ:</label>
         <input type="text" id="customMessage" placeholder="ここにメッセージを入力">
+        
+        <label for="otherMessage">その他メッセージ:</label>
+        <textarea id="otherMessage" placeholder="追加のメッセージ（任意）" rows="4"></textarea>
+
         <button onclick="goToCustomMessagePage()">送信</button>
     </div>
 
@@ -41,9 +57,14 @@
         }
 
         function goToCustomMessagePage() {
-            const customMessage = document.getElementById('customMessage').value;
-            if (customMessage.trim() !== "") {
-                const url = 'message.html?message=' + encodeURIComponent(customMessage);
+            const name = document.getElementById('name').value.trim();
+            const customMessage = document.getElementById('customMessage').value.trim();
+            const otherMessage = document.getElementById('otherMessage').value.trim();
+
+            if (customMessage !== "" || otherMessage !== "") {
+                const url = 'message.html?name=' + encodeURIComponent(name) + 
+                            '&message=' + encodeURIComponent(customMessage) + 
+                            '&otherMessage=' + encodeURIComponent(otherMessage);
                 window.location.href = url;
             } else {
                 alert('メッセージを入力してください');
